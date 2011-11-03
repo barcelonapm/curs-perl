@@ -1,0 +1,32 @@
+=head1 Programació orientada a objectes en Perl
+
+=head1 Moose
+
+=head1 Classes
+
+=head1 Mètodes
+
+=head1 Atributs
+
+=head1 Encapsulament
+
+=head1 Rols
+
+=head1 Herència
+
+=head1 Moose i OO en Perl 5
+
+=head1 Referències d'objectes
+
+=head1 Cerca de mètodes i herència
+
+=head1 AUTOLOAD
+
+=head1 Sobrecàrrega de mètodes
+
+=head1 Estratègies per les referències
+
+=head1 Reflexió
+
+=head1 Conceptes avançats
+
