@@ -1,6 +1,6 @@
 /* Following are the presentation styles -- edit away! */
 
-body {background: #FFF; color: #000; font-size: 2.25em;}
+body {background: #FFF; color: #000; font-size: 2.25em; font-family: Ubuntu, sans-serif;}
 :link, :visited {text-decoration: none; color: #00C;}
 #controls :active {color: #88A !important;}
 #controls :focus {outline: 1px dotted #227;}
