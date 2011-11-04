@@ -1,4 +1,11 @@
-=head1 Programació orientada a objectes en Perl
+=head1 Programació OO en Perl
+
+=head2 Curs d'introducció a Perl 2011
+
+=head3 Barcelona Perl Mongers
+
+Alex Muntada
+&lt;alexm@alexm.org&gt;
 
 =head1 Moose
 
