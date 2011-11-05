@@ -1,0 +1,81 @@
+Introducció a Perl
+Barcelona.pm
+11.11.05
+
+Perl
+PERL
+perl
+
+B:Perl
+
+    #!perl
+    print "Hello, world!\n";
+
+1987
+
+Larry
+Wall
+
+i:larry.jpg
+
+B:perl
+
+    $ perl -e 'print "Hello, world!\n"'
+
+R:PERL
+
+There is some contention about
+the all-caps spelling "PERL",
+which the documentation declares
+incorrect and which some core
+community members consider a
+sign of outsiders.
+                   --Wikipedia
+
+B:Perl 5
+B:vs.
+B:Perl 6
+
+STD
+
+    #!perl6
+    say "Hello, world!";
+
+Parrot
+
+Pugs
+Rakudo
+Niecza
+
+B:Barcelona.pm
+
+Perl Mongers
+www.pm.org
+
+B:Programa
+
+Dades i operadors
+G:Javier Arturo Rodríguez
+
+Estructures de dades
+i subrutines
+G:Jordi Delgado
+
+Fitxers i directoris
+G:Francesc Guasch
+
+Expressions regulars
+G:Carlos Juan
+
+Orientació a objectes
+G:Alex Muntada
+
+B:Wi-Fi
+
+SSID
+G:curs2011.perl.cat
+
+WPA2/AES
+R:Barcelona.pm
+
+Som-hi!
