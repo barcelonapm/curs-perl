@@ -9,7 +9,7 @@
 <meta name="generator" content="pod2s5 0.08" />
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.1" />
-<meta name="presdate" content="Fri Nov  4 00:59:21 2011" />
+<meta name="presdate" content="Sat Nov  5 17:38:04 2011" />
 <meta name="author" content="alexm" />
 <meta name="company" content="&nbsp;" />
 <!-- configuration parameters -->
@@ -47,7 +47,7 @@ img#me05 {top: 43px;left: 36px;}
 <div id="currentSlide"></div>
 <div id="header"></div>
 <div id="footer">
-<h1>ix &#8226; Fri Nov  4 00:59:21 2011</h1>
+<h1>ix &#8226; Sat Nov  5 17:38:04 2011</h1>
 <h2>Objectes</h2></div>
 </div><div class="slide">
 <h1>Programació OO en Perl
@@ -63,60 +63,465 @@ img#me05 {top: 43px;left: 36px;}
 <div class="slide">
 <h1>Moose
 
-</h1></div>
+</h1><h2>El sistema d'objectes de Perl 5
+
+</h2><ul class="incremental"><li level="1"><p>Simple, bàsic, esquelètic, flexible.
+
+</p></li><li level="1"><p>Ofereix poca ajuda per a la programació orientada a objectes.
+
+</p></li></ul class="incremental"></div>
+<div class="slide">
+<h1>Moose
+
+</h1><h2>Moose és un sistema d'objectes complet i potent
+
+</h2><ul class="incremental"><li level="1"><p>Està construït al damunt del sistema d'objectes de Perl 5.
+
+</p></li><li level="1"><p>Pren característiques d'altres llenguatges com Smalltalk, Common Lisp i Perl 6.
+
+</p></li><li level="1"><p>Moose és la millor manera de programar objectes en Perl 5 modern.
+
+</p></li></ul class="incremental"></div>
 <div class="slide">
 <h1>Classes
 
-</h1></div>
+</h1><p>En Perl 5 clàssic una classe és un paquet (o mòdul) de Perl
+dins un fitxer: <code>Cat.pm</code>
+
+</p>&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;Cat;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Moose;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00007f">1</font>;<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Classes
+
+</h1><p>En Perl 5 modern és el mateix però amb una sintaxi alternativa
+que permet crear un context més específic que el del fitxer.
+
+</p><p>Això ens interessa en cas que vulguem posar més d'una classe
+dins el mateix fitxer.
+
+</p>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;Cat;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Moose;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>Mètodes
 
-</h1></div>
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Cat;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$brad</font>&nbsp;=&nbsp;Cat-&gt;new();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$jack</font>&nbsp;=&nbsp;Cat-&gt;new();<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Mètodes
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Cat;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;Cat-&gt;meow();<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$alarm</font>&nbsp;=&nbsp;Cat-&gt;new();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">$alarm</font>-&gt;<font color="#0000ff">meow</font>();<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Mètodes
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;Cat;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Moose;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">meow</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$self</font>&nbsp;=&nbsp;<font color="#007f00">shift</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">"</font><font color="#ff0000">Meow!</font><font color="#ffa500">"</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>Atributs
 
-</h1></div>
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;Cat;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Moose;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">name</font><font color="#ffa500">'</font>&nbsp;=&gt;&nbsp;(<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">ro</font><font color="#ffa500">'</font>,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isa&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Str</font><font color="#ffa500">'</font>,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has(&nbsp;<font color="#ffa500">'</font><font color="#ff0000">age</font><font color="#ffa500">'</font>,&nbsp;is,&nbsp;<font color="#ffa500">'</font><font color="#ff0000">ro</font><font color="#ffa500">'</font>&nbsp;);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">diet</font><font color="#ffa500">'</font>,&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">rw</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Atributs
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Cat;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$fat</font>&nbsp;=&nbsp;Cat-&gt;new(&nbsp;name&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Fatty</font><font color="#ffa500">'</font>,&nbsp;age&nbsp;=&gt;&nbsp;<font color="#00007f">8</font>,&nbsp;diet&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Sea&nbsp;Treats</font><font color="#ffa500">'</font>&nbsp;);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#0000ff">$fat</font>-&gt;<font color="#0000ff">name</font>(),&nbsp;<font color="#ffa500">'</font><font color="#ff0000">&nbsp;eats&nbsp;</font><font color="#ffa500">'</font>,&nbsp;<font color="#0000ff">$fat</font>-&gt;<font color="#0000ff">diet</font>();<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">$fat</font>-&gt;<font color="#0000ff">diet</font>(&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Low&nbsp;Sodium&nbsp;Kitty&nbsp;Lo&nbsp;Mein</font><font color="#ffa500">'</font>&nbsp;);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#0000ff">$fat</font>-&gt;<font color="#0000ff">name</font>(),&nbsp;<font color="#ffa500">'</font><font color="#ff0000">&nbsp;now&nbsp;eats&nbsp;</font><font color="#ffa500">'</font>,&nbsp;<font color="#0000ff">$fat</font>-&gt;<font color="#0000ff">diet</font>();<BR>
+<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>Encapsulament
 
-</h1></div>
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;Cat;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Moose;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">name</font><font color="#ffa500">'</font>,&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">ro</font><font color="#ffa500">'</font>,&nbsp;isa&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Str</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">diet</font><font color="#ffa500">'</font>,&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">rw</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">birth_year</font><font color="#ffa500">'</font>,&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">ro</font><font color="#ffa500">'</font>,&nbsp;isa&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Int</font><font color="#ffa500">'</font>,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;=&gt;&nbsp;<b>sub&nbsp;</b>{&nbsp;(<font color="#007f00">localtime</font>)[<font color="#00007f">5</font>]&nbsp;+&nbsp;<font color="#00007f">1900</font>&nbsp;};<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Encapsulament
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">age</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$self</font>&nbsp;=&nbsp;<font color="#007f00">shift</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$year</font>&nbsp;=&nbsp;(<font color="#007f00">localtime</font>)[<font color="#00007f">5</font>]&nbsp;+&nbsp;<font color="#00007f">1900</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b>&nbsp;<font color="#0000ff">$year</font>&nbsp;<font color="#ffa500">-</font>&nbsp;<font color="#0000ff">$self</font>-&gt;<font color="#0000ff">birth_year</font>();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Polimorfisme
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">show_vital_stats</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$object</font>&nbsp;=&nbsp;<font color="#007f00">shift</font>;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">'</font><font color="#ff0000">My&nbsp;name&nbsp;is&nbsp;</font><font color="#ffa500">'</font>,&nbsp;<font color="#0000ff">$object</font>-&gt;<font color="#0000ff">name</font>();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">'</font><font color="#ff0000">I&nbsp;am&nbsp;</font><font color="#ffa500">'</font>,&nbsp;<font color="#0000ff">$object</font>-&gt;<font color="#0000ff">age</font>();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">'</font><font color="#ff0000">I&nbsp;eat&nbsp;</font><font color="#ffa500">'</font>,&nbsp;<font color="#0000ff">$object</font>-&gt;<font color="#0000ff">diet</font>();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Polimorfisme
+
+</h1><p><i>Duck Typing</i>
+
+</p><p>Si quelcom fa <code>quack()</code> és que és un ànec.
+
+</p></div>
+<div class="slide">
+<h1>Polimorfisme
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#7f7f7f"><i>#&nbsp;how&nbsp;old&nbsp;is&nbsp;the&nbsp;cat?</i></font><font color="#7f7f7f"><i><BR>
+</i></font>&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$years</font>&nbsp;=&nbsp;<font color="#0000ff">$zeppie</font>-&gt;<font color="#0000ff">age</font>();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#7f7f7f"><i>#&nbsp;store&nbsp;the&nbsp;cheese&nbsp;in&nbsp;the&nbsp;warehouse&nbsp;for&nbsp;six&nbsp;months</i></font><font color="#7f7f7f"><i><BR>
+</i></font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">$cheese</font>-&gt;<font color="#0000ff">age</font>();<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>Rols
 
-</h1></div>
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;LivingBeing;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;<font color="#007f00">Moose::Role</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;requires&nbsp;<font color="#ffa500">qw(</font>&nbsp;name&nbsp;age&nbsp;diet&nbsp;<font color="#ffa500">)</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Rols
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;Cat;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Moose;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">name</font><font color="#ffa500">'</font>,&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">ro</font><font color="#ffa500">'</font>,&nbsp;isa&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Str</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">diet</font><font color="#ffa500">'</font>,&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">rw</font><font color="#ffa500">'</font>,&nbsp;isa&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Str</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">birth_year</font><font color="#ffa500">'</font>,&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">ro</font><font color="#ffa500">'</font>,&nbsp;isa&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Int</font><font color="#ffa500">'</font>,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;=&gt;&nbsp;(<font color="#007f00">localtime</font>)[<font color="#00007f">5</font>]&nbsp;+&nbsp;<font color="#00007f">1900</font>;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<font color="#ffa500">'</font><font color="#ff0000">LivingBeing</font><font color="#ffa500">'</font>;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">age</font>&nbsp;{&nbsp;...&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Rols
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;Cat;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Moose;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">name</font><font color="#ffa500">'</font>,&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">ro</font><font color="#ffa500">'</font>,&nbsp;isa&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Str</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">diet</font><font color="#ffa500">'</font>,&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">rw</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<font color="#ffa500">'</font><font color="#ff0000">LivingBeing</font><font color="#ffa500">'</font>,&nbsp;<font color="#ffa500">'</font><font color="#ff0000">CalculateAge::From::BirthYear</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Rols
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Cat;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$kitten</font>&nbsp;=&nbsp;Cat-&gt;new(&nbsp;name&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Kitty</font><font color="#ffa500">'</font>,&nbsp;diet&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">fish</font><font color="#ffa500">'</font>&nbsp;);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">'</font><font color="#ff0000">This&nbsp;Cat&nbsp;is&nbsp;alive!</font><font color="#ffa500">'</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>if</b>&nbsp;<font color="#0000ff">$kitten</font>-&gt;<font color="#0000ff">DOES</font>(&nbsp;<font color="#ffa500">'</font><font color="#ff0000">LivingBeing</font><font color="#ffa500">'</font>&nbsp;);<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>Herència
 
-</h1></div>
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;LightSource;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Moose;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">candle_power</font><font color="#ffa500">'</font>,&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">ro</font><font color="#ffa500">'</font>,&nbsp;isa&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Int</font><font color="#ffa500">'</font>,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;=&gt;&nbsp;<font color="#00007f">1</font>;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">enabled</font><font color="#ffa500">'</font>,&nbsp;is&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">ro</font><font color="#ffa500">'</font>,&nbsp;isa&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Bool</font><font color="#ffa500">'</font>,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;=&gt;&nbsp;0,&nbsp;writer&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">_set_enabled</font><font color="#ffa500">'</font>;<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Herència
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">light</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$self</font>&nbsp;=&nbsp;<font color="#007f00">shift</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">$self</font>-&gt;<font color="#0000ff">_set_enabled</font>(<font color="#00007f">1</font>);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">extinguish</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$self</font>&nbsp;=&nbsp;<font color="#007f00">shift</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">$self</font>-&gt;<font color="#0000ff">_set_enabled</font>(0);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Herència
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;<font color="#007f00">LightSource::SuperCandle</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Moose;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extends&nbsp;<font color="#ffa500">'</font><font color="#ff0000">LightSource</font><font color="#ffa500">'</font>;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;<font color="#ffa500">'</font><font color="#ff0000">+candle_power</font><font color="#ffa500">'</font>,&nbsp;default&nbsp;=&gt;&nbsp;<font color="#00007f">100</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Herència
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;<font color="#007f00">LightSource::Glowstick</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Moose;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extends&nbsp;<font color="#ffa500">'</font><font color="#ff0000">LightSource</font><font color="#ffa500">'</font>;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">extinguish</font>&nbsp;{&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Herència
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;<font color="#007f00">LightSource::Cranky</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Carp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;Moose;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extends&nbsp;<font color="#ffa500">'</font><font color="#ff0000">LightSource</font><font color="#ffa500">'</font>;<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Herència
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;override&nbsp;light&nbsp;=&gt;&nbsp;<b>sub<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$self</font>&nbsp;=&nbsp;<font color="#007f00">shift</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">Carp::carp</font>(&nbsp;<font color="#ffa500">"</font><font color="#ff0000">Can't&nbsp;light&nbsp;a&nbsp;lit&nbsp;light&nbsp;source!</font><font color="#ffa500">"</font>&nbsp;)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>if</b>&nbsp;<font color="#0000ff">$self</font>-&gt;<font color="#0000ff">enabled</font>;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Herència
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;override&nbsp;extinguish&nbsp;=&gt;&nbsp;<b>sub<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$self</font>&nbsp;=&nbsp;<font color="#007f00">shift</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#007f00">Carp::carp</font>(&nbsp;<font color="#ffa500">"</font><font color="#ff0000">Can't&nbsp;extinguish&nbsp;an&nbsp;unlit&nbsp;light&nbsp;source!</font><font color="#ffa500">"</font>&nbsp;)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>unless</b>&nbsp;<font color="#0000ff">$self</font>-&gt;<font color="#0000ff">enabled</font>;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Herència
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Looks&nbsp;like&nbsp;a&nbsp;LightSource</font><font color="#ffa500">'</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>if</b>&nbsp;<font color="#0000ff">$sconce</font>-&gt;<font color="#0000ff">isa</font>(&nbsp;<font color="#ffa500">'</font><font color="#ff0000">LightSource</font><font color="#ffa500">'</font>&nbsp;);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Monkeys&nbsp;do&nbsp;not&nbsp;glow</font><font color="#ffa500">'</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>unless</b>&nbsp;<font color="#0000ff">$chimpy</font>-&gt;<font color="#0000ff">isa</font>(&nbsp;<font color="#ffa500">'</font><font color="#ff0000">LightSource</font><font color="#ffa500">'</font>&nbsp;);<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>Moose i OO en Perl 5
 
-</h1></div>
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$metaclass</font>&nbsp;=&nbsp;<font color="#007f00">Monkey::Pants</font>-&gt;meta();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Monkey::Pants&nbsp;instances&nbsp;have&nbsp;the&nbsp;attributes:</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#0000ff"><b>$_</b></font>-&gt;name&nbsp;<b>for</b>&nbsp;<font color="#0000ff">$metaclass</font>-&gt;<font color="#0000ff">get_all_attributes</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Monkey::Pants&nbsp;instances&nbsp;support&nbsp;the&nbsp;methods:</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#0000ff"><b>$_</b></font>-&gt;fully_qualified_name&nbsp;<b>for</b>&nbsp;<font color="#0000ff">$metaclass</font>-&gt;<font color="#0000ff">get_all_methods</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#7f7f7f"><i>#&nbsp;You&nbsp;can&nbsp;even&nbsp;see&nbsp;which&nbsp;classes&nbsp;extend&nbsp;a&nbsp;given&nbsp;class</i></font><font color="#7f7f7f"><i><BR>
+</i></font>&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$metaclass</font>&nbsp;=&nbsp;Monkey-&gt;meta();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">'</font><font color="#ff0000">Monkey&nbsp;is&nbsp;the&nbsp;superclass&nbsp;of:</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#0000ff"><b>$_</b></font>&nbsp;<b>for</b>&nbsp;<font color="#0000ff">$metaclass</font>-&gt;<font color="#0000ff">subclasses</font>;<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>Referències d'objectes
 
-</h1></div>
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;Player;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">new</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;(<font color="#0000ff">$class</font>,&nbsp;<font color="#0000ff">%attrs</font>)&nbsp;=&nbsp;<font color="#0000ff">@_</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b>&nbsp;<font color="#007f00">bless</font>&nbsp;\<font color="#0000ff">%attrs</font>,&nbsp;<font color="#0000ff">$class</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Referències d'objectes
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$joel</font>&nbsp;=&nbsp;Player-&gt;new(<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;=&gt;&nbsp;<font color="#00007f">10</font>,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">center</font><font color="#ffa500">'</font>,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$jerryd</font>&nbsp;=&nbsp;Player-&gt;new(<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;=&gt;&nbsp;4,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position&nbsp;=&gt;&nbsp;<font color="#ffa500">'</font><font color="#ff0000">guard</font><font color="#ffa500">'</font>,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;);<BR>
+<BR>
+</div>
+<div class="slide">
+<h1>Referències d'objectes
+
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">format</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$self</font>&nbsp;=&nbsp;<font color="#007f00">shift</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b>&nbsp;<font color="#ffa500">'</font><font color="#ff0000">#</font><font color="#ffa500">'</font>&nbsp;.&nbsp;<font color="#0000ff">$self</font>-&gt;{<font color="#ffa500">'</font><font color="#ff0000">number</font><font color="#ffa500">'</font>}&nbsp;.&nbsp;<font color="#ffa500">'</font><font color="#ff0000">&nbsp;plays&nbsp;</font><font color="#ffa500">'</font>&nbsp;.&nbsp;<font color="#0000ff">$self</font>-&gt;{<font color="#ffa500">'</font><font color="#ff0000">position</font><font color="#ffa500">'</font>};<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">number</font>&nbsp;{&nbsp;<b>return</b>&nbsp;shift-&gt;{<font color="#ffa500">'</font><font color="#ff0000">number</font><font color="#ffa500">'</font>}&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">position</font>&nbsp;{&nbsp;<b>return</b>&nbsp;shift-&gt;{<font color="#ffa500">'</font><font color="#ff0000">position</font><font color="#ffa500">'</font>}&nbsp;}<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>Cerca de mètodes i herència
 
-</h1></div>
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;InjuredPlayer;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;parent&nbsp;<font color="#ffa500">qw(</font>&nbsp;Player&nbsp;Hospital::Patient&nbsp;<font color="#ffa500">)</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>use</b>&nbsp;mro&nbsp;<font color="#ffa500">'</font><font color="#ff0000">c3</font><font color="#ffa500">'</font>;<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>AUTOLOAD
 
-</h1></div>
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>package</b>&nbsp;Foobar;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">AUTOLOAD</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>our</b>&nbsp;<font color="#0000ff">$AUTOLOAD</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;(<font color="#0000ff">$name</font>)&nbsp;=&nbsp;<font color="#0000ff">$AUTOLOAD</font>&nbsp;=~&nbsp;<font color="#ffa500">/</font><font color="#b03060">::</font><font color="#ff00ff">(</font><font color="#007f00">\w</font><font color="#ff00ff">+)$</font><font color="#ffa500">/</font>;<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#7f7f7f"><i>#&nbsp;pretty-print&nbsp;the&nbsp;arguments</i></font><font color="#7f7f7f"><i><BR>
+</i></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>local</b>&nbsp;<font color="#0000ff"><b>$"</b></font>&nbsp;=&nbsp;<font color="#ffa500">'</font><font color="#ff0000">,&nbsp;</font><font color="#ffa500">'</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">"</font><font color="#ff0000">In&nbsp;AUTOLOAD(</font><font color="#0000ff">@_</font><font color="#ff0000">)&nbsp;for&nbsp;</font><font color="#0000ff">$name</font><font color="#ff0000">!</font><font color="#ffa500">"</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>Sobrecàrrega de mètodes
 
-</h1></div>
-<div class="slide">
-<h1>Estratègies per les referències
-
-</h1></div>
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">overridden</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>my</b>&nbsp;<font color="#0000ff">$self</font>&nbsp;=&nbsp;<font color="#007f00">shift</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b>&nbsp;<font color="#0000ff">$self</font>-&gt;<font color="#0000ff">SUPER</font>::<font color="#0000ff">overridden</font>(&nbsp;<font color="#0000ff">@_</font>&nbsp;);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>Reflexió
 
-</h1></div>
+</h1>&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">"</font><font color="#0000ff">$pkg</font><font color="#ff0000">&nbsp;exists</font><font color="#ffa500">"</font>&nbsp;<b>if</b>&nbsp;<font color="#007f00">eval</font>&nbsp;{&nbsp;<font color="#0000ff">$pkg</font>-&gt;<font color="#0000ff">can</font>(&nbsp;<font color="#ffa500">'</font><font color="#ff0000">can</font><font color="#ffa500">'</font>&nbsp;)&nbsp;};<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>sub&nbsp;</b><font color="#007f00">module_loaded</font><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ny&nbsp;<font color="#0000ff">$modname</font>&nbsp;=&nbsp;<font color="#007f00">shift</font>;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000ff">$modname</font>&nbsp;=~&nbsp;<font color="#ffa500">s!</font><font color="#b03060">::</font><font color="#ffa500">!</font><font color="#ff0000">/</font><font color="#ffa500">!g</font>;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b>&nbsp;<font color="#007f00">exists</font>&nbsp;<font color="#0000ff"><b>$INC</b></font>{&nbsp;<font color="#0000ff">$modname</font>&nbsp;.&nbsp;<font color="#ffa500">'</font><font color="#ff0000">.pm</font><font color="#ffa500">'</font>&nbsp;};<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;say&nbsp;<font color="#ffa500">"</font><font color="#0000ff">$func</font><font color="#ff0000">()&nbsp;exists</font><font color="#ffa500">"</font>&nbsp;<b>if</b>&nbsp;<font color="#0000ff">$pkg</font>-&gt;<font color="#0000ff">can</font>(&nbsp;<font color="#0000ff">$func</font>&nbsp;);<BR>
+<BR>
+</div>
 <div class="slide">
 <h1>Conceptes avançats
 
-</h1></div></body></html>
+</h1><ul class="incremental"><li level="1"><p><b>Afavoriu la composició abans que l'herència.</b>
+
+</p></li><li level="1"><p><b>Principi de responsabilitat única:</b>
+una classe no ha de fer més feina de la que li correpon
+(Empleat sap d'empleats no de nòmines).
+
+</p></li><li level="1"><p><b>DRY:</b>
+Don¿t Repeat Yourself.
+
+</p></li><li level="1"><p><b>Principi de substitució de Liskov:</b>
+accepteu generalitzacions però sigueu específics en el que retorneu.
+
+</p></li><li level="1"><p><b>Subtipus i coercions.</b>
+
+</p></li><li level="1"><p><b>Immutabilitat:</b>
+proveu a fer els vostres objectes no modificables.
+
+</p></li></ul class="incremental"></div>
+<div class="slide">
+<h1>Gràcies
+
+</h1><p>Preguntes? Dubtes? Comentaris? Idees?
+</p></div></body></html>

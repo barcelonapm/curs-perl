@@ -9,31 +9,552 @@ Alex Muntada
 
 =head1 Moose
 
+=head2 El sistema d'objectes de Perl 5
+
+=over
+
+=item *
+
+Simple, bàsic, esquelètic, flexible.
+
+=item *
+
+Ofereix poca ajuda per a la programació orientada a objectes.
+
+=back
+
+=head1 Moose
+
+=head2 Moose és un sistema d'objectes complet i potent
+
+=over
+
+=item *
+
+Està construït al damunt del sistema d'objectes de Perl 5.
+
+=item *
+
+Pren característiques d'altres llenguatges com Smalltalk, Common Lisp i Perl 6.
+
+=item *
+
+Moose és la millor manera de programar objectes en Perl 5 modern.
+
+=back
+
 =head1 Classes
+
+En Perl 5 clàssic una classe és un paquet (o mòdul) de Perl
+dins un fitxer: C<Cat.pm>
+
+=begin perl
+
+    package Cat;
+    use Moose;
+    
+    1;
+
+=end
+
+=head1 Classes
+
+En Perl 5 modern és el mateix però amb una sintaxi alternativa
+que permet crear un context més específic que el del fitxer.
+
+Això ens interessa en cas que vulguem posar més d'una classe
+dins el mateix fitxer.
+
+=begin perl
+
+    {
+        package Cat;
+        use Moose;
+    }
+
+=end
 
 =head1 Mètodes
 
+=begin perl
+
+    use Cat;
+
+    my $brad = Cat->new();
+    my $jack = Cat->new();
+
+=end
+
+=head1 Mètodes
+
+=begin perl
+
+    use Cat;
+    
+    Cat->meow();
+
+    my $alarm = Cat->new();
+    $alarm->meow();
+
+=end
+
+=head1 Mètodes
+
+=begin perl
+
+    {
+        package Cat;
+        use Moose;
+    
+        sub meow
+        {
+            my $self = shift;
+            say "Meow!";
+        }
+    }
+
+=end
+
 =head1 Atributs
+
+=begin perl
+
+    {
+        package Cat;
+        use Moose;
+    
+        has 'name' => (
+            is => 'ro',
+            isa => 'Str',
+        );
+
+        has( 'age', is, 'ro' );
+        has 'diet', is => 'rw';
+    }
+
+=end
+
+=head1 Atributs
+
+=begin perl
+
+    use Cat;
+    
+    my $fat = Cat->new( name => 'Fatty', age => 8, diet => 'Sea Treats' );
+    say $fat->name(), ' eats ', $fat->diet();
+
+    $fat->diet( 'Low Sodium Kitty Lo Mein' );
+    say $fat->name(), ' now eats ', $fat->diet();
+
+
+=end
 
 =head1 Encapsulament
 
+=begin perl
+
+    {
+        package Cat;
+        use Moose;
+
+        has 'name', is => 'ro', isa => 'Str';
+        has 'diet', is => 'rw';
+        has 'birth_year', is => 'ro', isa => 'Int',
+            default => sub { (localtime)[5] + 1900 };
+
+=end
+
+=head1 Encapsulament
+
+=begin perl
+
+        sub age
+        {
+            my $self = shift;
+            my $year = (localtime)[5] + 1900;
+            return $year - $self->birth_year();
+        }
+    }
+
+=end
+
+=head1 Polimorfisme
+
+=begin perl
+
+    sub show_vital_stats
+    {
+        my $object = shift;
+
+        say 'My name is ', $object->name();
+        say 'I am ', $object->age();
+        say 'I eat ', $object->diet();
+    }
+
+=end perl
+
+=head1 Polimorfisme
+
+I<Duck Typing>
+
+Si quelcom fa C<quack()> és que és un ànec.
+
+=head1 Polimorfisme
+
+=begin perl
+
+    # how old is the cat?
+    my $years = $zeppie->age();
+    
+    # store the cheese in the warehouse for six months
+    $cheese->age();
+
+=end
+
 =head1 Rols
+
+=begin perl
+
+    {
+        package LivingBeing;
+        use Moose::Role;
+    
+        requires qw( name age diet );
+    }
+
+=end
+
+=head1 Rols
+
+=begin perl
+
+    {
+        package Cat;
+        use Moose;
+        has 'name', is => 'ro', isa => 'Str';
+        has 'diet', is => 'rw', isa => 'Str';
+        has 'birth_year', is => 'ro', isa => 'Int',
+            default => (localtime)[5] + 1900;
+
+        with 'LivingBeing';
+
+        sub age { ... }
+    }
+
+=end
+
+=head1 Rols
+
+=begin perl
+
+    {
+        package Cat;
+        use Moose;
+    
+        has 'name', is => 'ro', isa => 'Str';
+        has 'diet', is => 'rw';
+    
+        with 'LivingBeing', 'CalculateAge::From::BirthYear';
+    }
+
+=end
+
+=head1 Rols
+
+=begin perl
+
+    use Cat;
+
+    my $kitten = Cat->new( name => 'Kitty', diet => 'fish' );
+
+    say 'This Cat is alive!'
+        if $kitten->DOES( 'LivingBeing' );
+
+=end
 
 =head1 Herència
 
+=begin perl
+
+    {
+        package LightSource;
+        use Moose;
+
+        has 'candle_power', is => 'ro', isa => 'Int',
+            default => 1;
+
+        has 'enabled', is => 'ro', isa => 'Bool',
+            default => 0, writer => '_set_enabled';
+
+=end
+
+=head1 Herència
+
+=begin perl
+
+        sub light
+        {
+            my $self = shift;
+            $self->_set_enabled(1);
+        }
+
+        sub extinguish
+        {
+            my $self = shift;
+            $self->_set_enabled(0);
+        }
+    }
+
+=end
+
+=head1 Herència
+
+=begin perl
+
+    {
+        package LightSource::SuperCandle;
+        use Moose;
+
+        extends 'LightSource';
+
+        has '+candle_power', default => 100;
+    }
+
+=end
+
+=head1 Herència
+
+=begin perl
+
+    {
+        package LightSource::Glowstick;
+        use Moose;
+
+        extends 'LightSource';
+
+        sub extinguish { }
+    }
+
+=end
+
+=head1 Herència
+
+=begin perl
+
+    {
+        package LightSource::Cranky;
+        use Carp;
+        use Moose;
+
+        extends 'LightSource';
+
+=end
+
+=head1 Herència
+
+=begin perl
+
+        override light => sub
+        {
+            my $self = shift;
+            Carp::carp( "Can't light a lit light source!" )
+                if $self->enabled;
+
+            super();
+        };
+
+=end
+
+=head1 Herència
+
+=begin perl
+
+        override extinguish => sub
+        {
+            my $self = shift;
+            Carp::carp( "Can't extinguish an unlit light source!" )
+                unless $self->enabled;
+
+            super();
+        };
+    }
+
+=end
+
+=head1 Herència
+
+=begin perl
+
+    say 'Looks like a LightSource'
+        if $sconce->isa( 'LightSource' );
+
+    say 'Monkeys do not glow'
+        unless $chimpy->isa( 'LightSource' );
+
+=end
+
 =head1 Moose i OO en Perl 5
+
+=begin perl
+
+    my $metaclass = Monkey::Pants->meta();
+    say 'Monkey::Pants instances have the attributes:';
+    say $_->name for $metaclass->get_all_attributes;
+    say 'Monkey::Pants instances support the methods:';
+    say $_->fully_qualified_name for $metaclass->get_all_methods;
+    
+    # You can even see which classes extend a given class
+    my $metaclass = Monkey->meta();
+    say 'Monkey is the superclass of:';
+    say $_ for $metaclass->subclasses;
+
+=end
 
 =head1 Referències d'objectes
 
+=begin perl
+
+    {
+        package Player;
+
+        sub new
+        {
+            my ($class, %attrs) = @_;
+            return bless \%attrs, $class;
+        }
+    }
+
+=end
+
+=head1 Referències d'objectes
+
+=begin perl
+
+    my $joel = Player->new(
+        number => 10,
+        position => 'center',
+    );
+
+    my $jerryd = Player->new(
+        number => 4,
+        position => 'guard',
+    );
+
+=end
+
+=head1 Referències d'objectes
+
+=begin perl
+
+    sub format
+    {
+        my $self = shift;
+        return '#' . $self->{'number'} . ' plays ' . $self->{'position'};
+    }
+    
+    sub number { return shift->{'number'} }
+    sub position { return shift->{'position'} }
+
+=end
+
 =head1 Cerca de mètodes i herència
+
+=begin perl
+
+    package InjuredPlayer;
+    
+    use parent qw( Player Hospital::Patient );
+    
+    use mro 'c3';
+
+=end
 
 =head1 AUTOLOAD
 
+=begin perl
+
+    {
+        package Foobar;
+    
+        sub AUTOLOAD
+        {
+            our $AUTOLOAD;
+            my ($name) = $AUTOLOAD =~ /::(\w+)$/;
+   
+            # pretty-print the arguments
+            local $" = ', ';
+            say "In AUTOLOAD(@_) for $name!"
+        }
+    }
+
+=end
+
 =head1 Sobrecàrrega de mètodes
 
-=head1 Estratègies per les referències
+=begin perl
+
+    sub overridden
+    {
+        my $self = shift;
+    
+        return $self->SUPER::overridden( @_ );
+    }
+
+=end
 
 =head1 Reflexió
 
+=begin perl
+
+    say "$pkg exists" if eval { $pkg->can( 'can' ) };
+
+    sub module_loaded
+    {
+        ny $modname = shift;
+        $modname =~ s!::!/!g;
+
+        return exists $INC{ $modname . '.pm' };
+    }
+    
+    say "$func() exists" if $pkg->can( $func );
+
+=end
+
 =head1 Conceptes avançats
 
+=over
+
+=item *
+
+B<Afavoriu la composició abans que l'herència.>
+
+=item *
+
+B<Principi de responsabilitat única:>
+una classe no ha de fer més feina de la que li correpon
+(Empleat sap d'empleats no de nòmines).
+
+=item *
+
+B<DRY:>
+Don¿t Repeat Yourself.
+
+=item *
+
+B<Principi de substitució de Liskov:>
+accepteu generalitzacions però sigueu específics en el que retorneu.
+
+=item *
+
+B<Subtipus i coercions.>
+
+=item *
+
+B<Immutabilitat:>
+proveu a fer els vostres objectes no modificables.
+
+=back
+
+=head1 Gràcies
+
+Preguntes? Dubtes? Comentaris? Idees?
