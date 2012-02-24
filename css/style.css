@@ -12,7 +12,7 @@ body {
 }
 .biginfo h1 {
   margin-bottom: 9px;
-  font-size: 81px;
+  font-size: 88px;
   letter-spacing: -1px;
   line-height: 1;
 }
@@ -139,13 +139,13 @@ div.page-header { margin-top:60px; }
     padding-top: 0;
   }
   .biginfo h1 {
-    font-size: 63px;
+    font-size: 75px;
   }
   .biginfo p {
     margin-right: 0;
     margin-left: 0;
-    font-size: 26px;
-    line-height: 30px;
+    font-size: 28px;
+    line-height: 32px;
   }
 }
 
