@@ -1,0 +1,71 @@
+#!/usr/bin/env pinpoint
+
+[samarreta.jpg]
+[fill]
+[font=Ubuntu 50px]
+[duration=5.000000]
+[text-align=center]
+[text-color=orange]
+-- [duration=5.000000]
+Curs <i>avançat</i> de Perl 2012
+Barcelona.pm
+
+-- [duration=3.393199] [font=Ubuntu 100px]
+<b>Cloenda</b>
+
+-- [toolchain.jpg] [duration=5.000000] [text-color=white]
+Instal·lació
+Eines
+Mòduls
+
+-- [moose.jpg] [duration=5.000000] [text-color=white]
+Orientació a objectes
+Moose
+
+-- [dbic.jpg] [duration=5.000000] [text-color=white]
+Bases de dades
+DBI i DBIx::Class
+
+-- [catalyst.jpg] [duration=5.000000] [text-color=white]
+Frameworks web
+Catalyst i Mojolicious
+
+-- [feedback.jpg] [text-align=left] [duration=5.000000] [text-color=white]
+<b>Feedback</b>
+... ok
+... not ok
+
+enquesta
+
+-- [events.jpg] [duration=5.000000] [text-color=white]
+<b>Esdeveniments</b>
+
+YAPC::EU 2012 (Frankfurt)
+
+curs d'introducció?
+workshop??
+YAPC???
+
+-- [duration=5.000000] [font=Ubuntu 100px]
+<b>Barcelona.pm</b>
+
+-- [duration=5.000000]
+reunions mensuals
+llista de mongers
+llista d'anuncis
+blog
+irc
+
+-- [duration=5.000000]
+@barcelonapm
+http://barcelona.pm/
+
+-- [duration=5.000000]
+<b>Agraïments</b>
+
+DAC (UPC)
+vosaltres
+donacions
+
+-- [perlalive.jpg] [duration=5.000000] [bottom] [text-color=white]
+
