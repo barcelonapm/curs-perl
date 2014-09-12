@@ -1,328 +1,43 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curs de Perl :: Barcelona Perl Mongers</title>
-    <link href="bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="bootstrap/css/bootstrap-responsive.min.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script type="text/javascript">
-    /* <![CDATA[ */
-        (function() {
-            var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-            s.type = 'text/javascript';
-            s.async = true;
-            s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
-            t.parentNode.insertBefore(s, t);
-        })();
-    /* ]]> */</script>
-  </head>
-  <body data-spy="scroll" data-offset="40">
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" title="Barcelona.pm" href="http://barcelona.pm/">Barcelona Perl Mongers</a>
-          <div class="nav-collapse collapse" style="height: 0px; ">
-            <ul class="nav pull-right">
-              <li><a href="#">Inici</a></li>
-              <li><a href="#program">Programa</a></li>
-              <li><a href="#signup">Inscripcions</a></li>
-              <li><a href="#where">Lloc</a></li>
-              <li><a href="#contact">Contacte</a></li>
-            </ul>
-          </div>
-        </div>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barcelona Perl Workshop :: Barcelona Perl Mongers</title>
+<link href="bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="bootstrap/css/bootstrap-responsive.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body data-spy="scroll" data-offset="40">
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" title="Barcelona.pm" href="http://barcelona.pm/">Barcelona Perl Mongers</a>
+      <div class="nav-collapse collapse" style="height: 0px; ">
+        <ul class="nav pull-right">
+          <li><a href="/12.11/">Curs de Perl 12.11</a></li>
+          <li><a href="/12.03/">Curs de Perl 12.03</a></li>
+        </ul>
       </div>
-    </div>
-    <div class="container">
-      <header class="biginfo" id="what">
-  <div class="inner">
-    <h1>Curs de Perl</h1>
-    <p>
-      Per a qui vulgui aprendre Perl des de zero de forma pràctica.
-      <strong>10&nbsp;de&nbsp;novembre</strong>
-    </p>
-    <div class="pull-right">
-
-      <!-- twitter -->
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://curs.perl.cat/#12.11" data-text="Apunteu-vos al curs de Perl organitzat per Barcelona.pm el 10 de novembre al Campus Nord de la UPC" data-related="barcelonapm" data-hashtags="cursperl">Tweet</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-      <!-- linkedin -->
-      <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
-      <script type="IN/Share" data-url="http://linkd.in/RpQvDu" data-counter="right"></script>
-
-      <!-- flattr -->
-      <a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://curs.perl.cat/"></a>
-      <noscript><a href="http://flattr.com/thing/535541/Curs-de-Perl" target="_blank">
-      <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></noscript>
-
-    </div>
-  </div>
-</header>
-<div class="container">
-    <section id="program">
-    <div class="row">
-      <div class="page-header">
-        <h1>Programa <small>horari i temari del curs</small></h1>
-      </div>
-      <div class="span3 columns">
-        <div class="well">
-          <p>El curs es realitzarà el dia <strong>10 de novembre de 2012</strong> a partir de les 9h. Sigueu puntuals, si us plau. </p>
-          <p>No cal tenir coneixements previs de <a href="http://www.perl.org/" title="El llenguatge de programació Perl">Perl</a>. Serà un curs més pràctic que el curs d'introducció del 2011, però podeu consultar igualment el material d'aquell curs a les descàrregues que trobareu dins el temari.</p>
-          <p>En nostre objectiu és fer un projecte al llarg de tot el curs com a excusa per fer una introducció al llenguatge Perl de forma pràctica.</p>
-        </div>
-      </div>
-      <div class="span6 columns">
-        <div class="accordion" id="desc-temari">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#desc-temari" href="#welcome">
-                09:00 &mdash; Benvinguda
-              </a>
-            </div>
-            <div id="welcome" class="accordion-body collapse" style="height: 0px; ">
-              <div class="accordion-inner">
-                <ul>
-                  <li>Orientació</li>
-                  <li>Acreditacions</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#desc-temari" href="#slot1">
-                09:30 &mdash; <strong>Dades i operadors</strong> (2h)
-              </a>
-            </div>
-            <div id="slot1" class="accordion-body collapse" style="height: 0px; ">
-              <div class="accordion-inner">
-                <p class="pull-right">
-                  :: <a href="http://www.slideshare.net/codehead/barcelonapm-curs1211-sess01" title="presentació de dades i operadors del curs 12.11">descàrrega</a>
-                </p>
-                <ul>
-                  <li>tipus bàsics: <code>$scalar</code> <code>@array</code> <code>%hash</code></li>
-                  <li>cadenes de caràcters</li>
-                  <li>operadors numèrics i de cadenes</li>
-                  <li>control del flux: condicionals, bucles i errors</li>
-		  <li>entrada/sortida: <code>STDIN</code> <code>STDOUT</code></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#desc-temari" href="#morning-break">
-                11:30 &mdash; <em>Pausa</em>
-              </a>
-            </div>
-            <div id="morning-break" class="accordion-body collapse" style="height: 0px; ">
-              <div class="accordion-inner">
-                <p>
-                  Cafè i donuts!
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#desc-temari" href="#slot2">
-                12:00 &mdash; <strong>Referències, subrutines i mòduls</strong> (2h)
-              </a>
-            </div>
-            <div id="slot2" class="accordion-body collapse">
-              <div class="accordion-inner">
-                <p class="pull-right">
-                  :: <a href="http://db.tt/PYIUG6IJ" title="presentació de referències i subrutines del curs 12.11">descàrrega</a>
-                </p>
-                <ul>
-                  <li>SCALAR, ARRAY, HASH, CODE, GLOB: <code>ref</code></li>
-                  <li>estructures de dades multi-nivell</li>
-                  <li>subrutines, clausures i <em>callbacks</em></li>
-                  <li>Foobar.pm: <code>require</code> <code>use</code> <code>package</code></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#desc-temari" href="#lunch">
-                14:00 &mdash; <em>Dinar</em>
-              </a>
-            </div>
-            <div id="lunch" class="accordion-body collapse" style="height: 0px; ">
-              <div class="accordion-inner">
-                <p>
-                  El dinar va inclós amb el preu del curs.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#desc-temari" href="#slot3">
-                15:30 &mdash; <strong>Fitxers i directoris</strong> (1h30)
-              </a>
-            </div>
-            <div id="slot3" class="accordion-body collapse">
-              <div class="accordion-inner">
-                <p class="pull-right">
-                  :: <a href="http://www.slideshare.net/pplusdomain/ficheros-y-directorios-15112452" title="presentació de fitxers i directoris del curs 12.11">descàrrega</a>
-                </p>
-                <ul>
-                  <li>Fitxers: obrir, llegir, escriure</li>
-                  <li>Operadors unaris</li>
-                  <li>Directoris: obrir, llegir</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#desc-temari" href="#afternoon-break">
-                17:00 &mdash; <em>Pausa</em>
-              </a>
-            </div>
-            <div id="afternoon-break" class="accordion-body collapse" style="height: 0px; ">
-              <div class="accordion-inner">
-                <p>
-                  Cafè
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#desc-temari" href="#slot4">
-                17:30 &mdash; <strong>Expressions regulars</strong> (1h30)
-              </a>
-            </div>
-            <div id="slot4" class="accordion-body collapse">
-              <div class="accordion-inner">
-                <p class="pull-right">
-                  :: <a href="https://github.com/diegok/curs-1211-regex" stitle="presentació d'expressions regulars del curs 11.11">descàrrega</a>
-                </p>
-                <ul>
-                  <li>literals</li>
-                  <li>operadors: match, binding, qr//</li>
-                  <li>quantificadors</li>
-                  <li>anchors, metacaracters, character classes</li>
-                  <li>captures</li>
-                  <li>seqüències d'escapament</li>
-                  <li>modificacions i substitucions</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#desc-temari" href="#goodbye">
-                19:00 &mdash; Comiat
-              </a>
-            </div>
-            <div id="goodbye" class="accordion-body collapse" style="height: 0px; ">
-              <div class="accordion-inner">
-                <ul>
-                  <li>Clausura</li>
-                  <li>Comentaris</li>
-                  <li>Agraïments</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="span3 columns">
-        <div class="well">
-          <h4>Informació per als alumnes</h4>
-          <p>
-            Per fer les pràctiques cal que dugueu un ordinador portàtil, nosaltres us proporcionarem una imatge d'una màquina virtual amb l'entorn de treball.
-          En cas que no pugueu aconseguir un portàtil, podeu treballar fent parella amb algú altre.
-          </p>
-        </div>
-        <div class="well">
-          <h4>Material del curs</h4>
-          <p>
-            Trobareu les presentacions del curs a cada bloc del temari.
-          </p>
-          <p>
-          El material de les pràctiques i les solucions proposades està publicat a <a href="https://github.com/barcelonapm/curs-1211" title="dipòsit del curs 12.11 a GitHub">GitHub</a>, on també podeu descarregar-ho en format <a href="https://github.com/barcelonapm/curs-1211/archive/master.zip">ZIP</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <section id="signup">
-    <div class="row">
-      <div class="page-header">
-        <h1>Inscripcions <small>places limitades!</small></h1>
-      </div>
-      <div class="span12">
-        <p>
-          El número de places disponibles són limitades i les assignarem en ordre de pagament. El preu del curs inclou les classes, una samarreta, el dinar i els cafès.
-          <iframe src="http://www.eventbrite.com/tickets-external?eid=3007971925&ref=etckt" frameborder="0" height="250" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe>
-        </p>
-      </div>
-    </div>
-  </section>
-
-    <section id="where">
-    <div class="row">
-      <div class="page-header">
-        <h1>Lloc <small>com arribar al lloc del curs</small></h1>
-      </div>
-      <div class="span3 columns">
-        <p>
-          Al Campus Nord de la <a title="Universitat Politècnica de Catalunya" href="http://www.upc.edu/">UPC</a>,
-          a la sala E101 del mòdul C6. Vegeu el mapa.</p>
-        <p>
-          Volem agrair al
-          <a title="Departament d'Arquitectura de Computadors (UPC)" href="http://www.ac.upc.edu/">Departament d'Arquitectura de Computadors</a>
-          que ens permeti l'ús de les instal·lacions.
-        </p>
-      </div>
-      <div class="span9 columns">
-        <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?ie=UTF8&amp;hl=en&amp;t=k&amp;msa=0&amp;msid=215481910282089122419.00045eb5eb49975fe4320&amp;source=embed&amp;ll=41.389511,2.112755&amp;spn=0.003864,0.006866&amp;output=embed"></iframe>
-      </div>
-    </div>
-  </section>
-
-    <section id="contact">
-    <div class="row">
-      <div class="page-header">
-        <h1>Contacte <small>us cal ajuda?</small></h1>
-      </div>
-      <div class="span12">
-        <p>
-	Si us cal posar-vos en contacte amb l'organització del curs, podeu fer-ho per correu a l'adreça &lt;<strong>curs2012 arrova perl punt cat</strong>&gt; o amb una piulada a <strong><a href="https://twitter.com/cursperl" title="Curs de Perl a Twitter">@cursperl</a></strong>.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  
+		</div>
+	</div>
 </div>
- 
-      <footer class="footer">
-        <p class="pull-right">Built with <a href="http://twitter.github.com/bootstrap/index.html">Bootstrap</a>, <a href="http://mojolicio.us">Mojolicious</a> and love by Just another Perl hacker(s), from <a href="http://barcelona.pm/">Barcelona.pm</a>.</p>
-      </footer>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script>
-      $(function(){
-        $('.navbar').scrollspy();
-      });
-    </script>
+<div class="container">
+	<header class="biginfo" id="what">
+		<div class="inner">
+			<h1>Barcelona Perl Workshop</h1>
+			<p><em>Don't miss the most exciting weekend this year in Barcelona!</em></p>
+			<p><strong>Nov 8, 2014</strong></p>
+		</div>
+	</header>
+</div>
+	</div>
+  </section>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
   </body>
 </html>
